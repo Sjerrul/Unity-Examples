@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Experimental.TerrainAPI;
 using Random = UnityEngine.Random;
 
+namespace PoissonDiscsampling
+{
 public static class PoissonDiscSampling
 {
     public static List<Vector2> GeneratePoints(float radius, Vector2 sampleRegionSize, int numberOfSamples = 30)
@@ -84,3 +86,5 @@ public static class PoissonDiscSampling
         return false;
     }
 }
+}
+

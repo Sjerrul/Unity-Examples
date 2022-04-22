@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class PoissonDiscSamplingExample : MonoBehaviour
+namespace PoissonDiscsampling
 {
-    public float radius = 1f;
-    public Vector2 regionSize = Vector2.one;
-    public int numberOfSamples = 30;
-    public float displayRadius = 1f;
-    
-    private List<Vector2> points;
-    
-    // Triggered when properties change in editor
-    private void OnValidate()
+    public class PoissonDiscSamplingExample : MonoBehaviour
     {
-        points = PoissonDiscSampling.GeneratePoints(radius, regionSize, numberOfSamples);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(regionSize / 2, regionSize);
-        if (points != null)
+        public float radius = 1f;
+        public Vector2 regionSize = Vector2.one;
+        public int numberOfSamples = 30;
+        public float displayRadius = 1f;
+        
+        private List<Vector2> points;
+        
+        // Triggered when properties change in editor
+        private void OnValidate()
         {
-            foreach (var point in points)
+            points = PoissonDiscSampling.GeneratePoints(radius, regionSize, numberOfSamples);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireCube(regionSize / 2, regionSize);
+            if (points != null)
             {
-                Gizmos.DrawSphere(point, displayRadius);
+                foreach (var point in points)
+                {
+                    Gizmos.DrawSphere(point, displayRadius);
+                }
             }
         }
     }
+
 }
+

@@ -3,42 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProceduralGenerationExample : MonoBehaviour
+namespace ProceduralGeneration
 {
-    public GameObject StarPrefab;
-
-    private IList<StarSystem> stars;
-    public int Width;
-    public int Height;
-
-    void Start()
+    public class ProceduralGenerationExample : MonoBehaviour
     {
-        this.stars = new List<StarSystem>();
-        for (int y  = 0; y < Width; y++)
+        public GameObject StarPrefab;
+
+        private IList<StarSystem> stars;
+        public int Width;
+        public int Height;
+
+        void Start()
         {
-            for (int x  = 0; x < Height; x++)
+            this.stars = new List<StarSystem>();
+            for (int y  = 0; y < Width; y++)
             {
-                StarSystem starSystem = new StarSystem(x, y);
-                stars.Add(starSystem);
-            }
-        }   
+                for (int x  = 0; x < Height; x++)
+                {
+                    StarSystem starSystem = new StarSystem(x, y);
+                    stars.Add(starSystem);
+                }
+            }   
 
-        foreach (var starSystem in this.stars)
-        {
-            if (!starSystem.HasStar)
+            foreach (var starSystem in this.stars)
             {
-                continue;
-            }
+                if (!starSystem.HasStar)
+                {
+                    continue;
+                }
 
-            var star = Instantiate(StarPrefab, new Vector2(starSystem.X, starSystem.Y), Quaternion.identity, transform);
+                var star = Instantiate(StarPrefab, new Vector2(starSystem.X, starSystem.Y), Quaternion.identity, transform);
 
-            // Set size
-            float scale = Mathf.Lerp(0.5f, 1f, starSystem.StarSize / 100f);
-            star.transform.localScale = Vector3.one * scale;
+                // Set size
+                float scale = Mathf.Lerp(0.5f, 1f, starSystem.StarSize / 100f);
+                star.transform.localScale = Vector3.one * scale;
 
-            // Set color
-            star.GetComponent<MeshRenderer>().material.color = starSystem.color;
-        }           
+                // Set color
+                star.GetComponent<MeshRenderer>().material.color = starSystem.color;
+            }           
+        }
+
     }
 
 }
+

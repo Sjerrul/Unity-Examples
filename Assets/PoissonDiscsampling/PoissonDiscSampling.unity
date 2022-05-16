@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e887429cfb7e4ed48966007c2df35104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
-  regionSize: {x: 19.51, y: 20}
-  numberOfSamples: 30
+  radius: 2.04
+  regionSize: {x: 26.94, y: 25.7}
+  numberOfSamples: 31
   displayRadius: 0.3
 --- !u!4 &177217055
 Transform:
